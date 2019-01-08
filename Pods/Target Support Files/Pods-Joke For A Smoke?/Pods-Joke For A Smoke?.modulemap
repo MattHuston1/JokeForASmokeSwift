@@ -1,0 +1,6 @@
+framework module Pods_Joke_For_A_Smoke_ {
+  umbrella header "Pods-Joke For A Smoke?-umbrella.h"
+
+  export *
+  module * { export * }
+}
