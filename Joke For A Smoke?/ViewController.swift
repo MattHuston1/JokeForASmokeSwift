@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
     @IBOutlet weak var OneLiner: UIButton!
+    @IBOutlet weak var JokeTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,19 @@ class ViewController: UIViewController {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 let JsonData = swiftyJsonVar["data"]
                 let JsonChildren = JsonData["children"]
-                let random = JsonChildren.randomElement()
-                    print(random)
+//                let random = JsonChildren.randomElement()!
+                let randomIndex = Int(arc4random_uniform(UInt32(JsonChildren.count)))
+//                print(JsonChildren[randomIndex])
+                let random = JsonChildren[randomIndex]
+                let data = random["data"]
+                let jokeTitle = data["title"]
+                    print(jokeTitle)
+                
+                self.JokeTitle?.text = ("\(jokeTitle)")
+//                print(data)
+//                        print(JsonChildren)
+//                print(random)
 //                    print(swiftyJsonVar)
-//                    print(JsonData["children"])
 //                print(swiftyJsonVar["data"])
 //                let dataArray = swiftyJsonVar.data.children
                 
